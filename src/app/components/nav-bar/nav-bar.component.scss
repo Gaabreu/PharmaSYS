@@ -1,7 +1,9 @@
+@import '../../../variables.scss';
+
 .example-container {
     position: absolute;
-    top: 60px;
-    bottom: 60px;
+    top: 55px;
+    bottom: 0px;
     left: 0;
     right: 0;
   }
@@ -9,22 +11,20 @@
   .example-sidenav {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    text-align: center;
     width: 200px;
-    background: rgba(255, 0, 0, 0.5);
+    background: $nav-background;
   }
   
   .example-header {
+    background: $nav-background;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
   }
-  
-  .example-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+
+  li{
+    padding-top: 100px;
   }
-  

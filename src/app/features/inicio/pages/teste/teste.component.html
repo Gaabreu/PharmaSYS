@@ -1,0 +1,120 @@
+<ng-container>
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-sm-12 text-center">
+                <button (click)='novaComanda = true' mat-button color="primary">Nova comanda</button>
+                <button (click)='sangria = true' mat-button color="primary">Sangria</button>
+                <button (click)='devolucao = true' mat-button color="primary">Devoluções</button>
+            </div>
+        </div>
+        <div style="margin-top: 200px;" class="text-center" *ngIf='novaComanda'>
+            <h2>NOVA COMANDA</h2>
+            <div class="row justify-content-center">
+                <div class="col-sm-7">
+                    <div class="col-sm-11 m-3 text">
+                        <mat-label>FORMA DE PAGAMENTO</mat-label><br>
+                        <app-select [tipos]="tipos"></app-select>
+                        
+                    </div>
+                    <hr>
+                    <div class="col-sm-11 m-3">
+                        <button mat-raised-button color="primary">A Vista</button>
+                        <button mat-raised-button color="primary">Parcelado</button>
+                    </div>
+                    
+                    <div class="col-sm-11 m-3">
+                        <app-select [tipos]="tipos"></app-select>
+                    </div>
+                    <hr>
+                    <div class="col-sm-11 m-3">
+                        <button mat-raised-button color="primary">Redefinir</button>
+                        <button mat-raised-button color="primary">Confirmar</button>
+                    </div>
+                </div>
+                
+                <div class="col-sm-5">
+                    <div class="example-container col-sm-12">   
+                        <table  mat-table [dataSource]="transactions">
+                            
+                            <ng-container  matColumnDef="quantidade">
+                                <th mat-header-cell *matHeaderCellDef> QTDE </th>
+                                <td mat-cell *matCellDef="let transaction"> {{transaction.quantidade}} </td>
+                            </ng-container>
+                            
+                            <ng-container matColumnDef="produto">
+                                <th mat-header-cell *matHeaderCellDef> PRODUTO </th>
+                                <td mat-cell *matCellDef="let transaction"> {{transaction.produto}} </td>
+                            </ng-container>
+                            
+                            <ng-container matColumnDef="vlUnitario">
+                                <th mat-header-cell *matHeaderCellDef> VAL. UNITÁRIO </th>
+                                <td mat-cell *matCellDef="let transaction"> {{transaction.vlUnitario | currency:"BRL":"symbol"}} </td>
+                            </ng-container>
+                            
+                            <ng-container matColumnDef="desconto">
+                                <th mat-header-cell *matHeaderCellDef> DESCONTO </th>
+                                <td mat-cell *matCellDef="let transaction"> {{transaction.desconto | currency:"BRL":"symbol"}} </td>
+                            </ng-container>
+                            
+                            <ng-container matColumnDef="vlFinal">
+                                <th mat-header-cell *matHeaderCellDef> VAL. FINAL </th>
+                                <td mat-cell *matCellDef="let transaction"> {{transaction.vlFinal | currency:"BRL":"symbol"}} </td>
+                            </ng-container>
+                            
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            
+                        </table>
+                    </div>
+                    <hr>
+                    <hr>
+                    <div class="col-sm-12">
+                        <div class="col-sm-5">
+                            <mat-label>TOTAL A PAGAR: </mat-label>
+                            <h2 class="primary">{{getTotalCost() | currency:"BRL":"symbol"}}</h2>
+                        </div>
+                        <div  class="col-sm-5">
+                            <mat-label>VALOR PAGO: </mat-label>
+                            <h2>{{0 | currency:"BRL":"symbol"}}</h2>
+                            
+                        </div>
+                        <button mat-raised-button color="primary">Cancelar compra</button>
+                        <button mat-raised-button color="primary">Finalizar Compra</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div style="margin-top: 200px;" class="text-center" *ngIf='sangria'>
+            <h2>SANGRIA</h2>
+            <div class="row justify-content-center">
+                <form class="col-sm-12 text-center">
+                    <mat-form-field class="example-full-width" >
+                        <mat-label>DIGITE O VALOR DE RETIRADA:</mat-label>
+                        <span matPrefix>R$ &nbsp;</span>
+                        <input type="number" matInput >
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                    </mat-form-field>
+                    <div>
+                        <button mat-raised-button type="button" (click)='sangria = false' color="accent">Cancelar</button>
+                        <button mat-raised-button color="primary">Efetuar retirada</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div style="margin-top: 200px;" class="text-center" *ngIf='devolucao'>
+            <h2>DEVOLUÇÕES</h2>
+            <div class="row justify-content-center">
+                <form class="col-sm-12 text-center">
+                    <mat-form-field class="example-full-width" >
+                        <mat-label>DIGITE O CÓDIGO FISCAL:</mat-label>
+                        <input type="text" matInput >
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                    </mat-form-field>
+                        <button mat-raised-button color="primary">PESQUISAR</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</ng-container>
