@@ -3,13 +3,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material-module';
 import { LoginModule } from './features/login/login.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { InicioModule } from './features/inicio/inicio.module';
-import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { SelectComponent } from './components/select/select.component';
+import { IndexModule } from './features/index/index.module';
+import { GestorModule } from './features/gestor/gestor.module';
+import { SharedModule } from './features/shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxMaskModule } from 'ngx-mask';
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   declarations: [
@@ -20,16 +22,19 @@ import { SelectComponent } from './components/select/select.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
     MaterialModule,
     LoginModule,
-    InicioModule,
+    GestorModule,
+    SharedModule,
+    NgxMaskModule,
+    TextMaskModule,
+    IndexModule,
     NgbModule,
+    HttpClientModule,
 
   ],
   providers: [],
-  exports: [NavBarComponent, SelectComponent],
+  exports: [IndexModule, GestorModule, TextMaskModule, NgxMaskModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

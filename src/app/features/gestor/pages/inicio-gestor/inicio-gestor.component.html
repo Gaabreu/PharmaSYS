@@ -1,0 +1,96 @@
+<ng-container>
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-12 text-center">
+                <button  mat-button color="primary">Balanço de vendas</button>
+                <button  (click)="toggleDisplayTerceiro()" mat-button color="primary">Tercerizados</button>
+                <button  (click)="toggleDisplayFuncionario()" mat-button color="primary">Funcionários</button>
+                <button  mat-button color="primary">Relatórios</button>
+            </div>
+        </div>
+
+        <!-- FUNCIONARIOS -->
+        <div [hidden]='isFuncionario' style="margin-top: 200px;" class="text-center">
+
+            <h2>FUNCIONÁRIOS</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="col-lg-12">
+
+                        <!-- FILTRO -->
+                        <mat-form-field>
+                            <mat-label>Filtrar</mat-label>
+                            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ID, nome, data de nascimento, cargo, telefone ou acesso" #input>
+                            <mat-icon matSuffix>search</mat-icon>
+                        </mat-form-field>
+
+                        <!-- TABELA -->
+                        <div class="mat-elevation-z8">
+                            <table mat-table [dataSource]="dataSource" matSort>
+
+                              <!-- ID  -->
+                              <ng-container matColumnDef="id">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                                <td mat-cell *matCellDef="let row"> {{row.id_funcionario}} </td>
+                              </ng-container>
+                          
+                              <!-- DATA DE NASCIMENTO -->
+                              <!-- <ng-container matColumnDef="dtNasc">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Dt.Nasc </th>
+                                <td mat-cell *matCellDef="let row"> {{row.dtNasc}} </td>
+                              </ng-container> -->
+                          
+                              <!-- NOME-->
+                              <ng-container matColumnDef="nome">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+                                <td mat-cell *matCellDef="let row"> {{row.nm_funcionario}} </td>
+                              </ng-container>
+                          
+                              <!-- CARGO -->
+                              <!-- <ng-container matColumnDef="cargo">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Cargo </th>
+                                <td mat-cell *matCellDef="let row"> {{row.cargo}} </td>
+                              </ng-container> -->
+
+                              <!-- TELEFONE -->
+                              <ng-container matColumnDef="telefone">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefone </th>
+                                <td mat-cell *matCellDef="let row"> {{row.nr_telefone}} </td>
+                              </ng-container>
+
+                              <!-- ACESSO -->
+                              <!-- <ng-container matColumnDef="acesso">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Acesso </th>
+                                <td mat-cell *matCellDef="let row"> {{row.acesso}} </td>
+                              </ng-container> -->
+                          
+                              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                          
+                              <!-- RETORNO CASO NÃO ENCONTRE O QUE FOI DIGITADO NO FILTRO -->
+                              <tr class="mat-row" *matNoDataRow>
+                                <td class="mat-cell" colspan="4">Não foi encontrado o campo: "{{input.value}}"</td>
+                              </tr>
+                            </table>
+                          
+                            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-lg-12">
+                        <button mat-raised-button class="cadFunc" color="primary" (click)="openDialog()">CADASTRAR NOVO FUNCIONÁRIO</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- TERCEIRO -->
+        <div [hidden]='isTerceiro'>
+
+        </div>
+    </div>
+    
+</ng-container>
+

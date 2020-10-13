@@ -28,3 +28,8 @@
   li{
     padding-top: 100px;
   }
+
+  .menu-icon:focus{
+    outline: none !important;
+    border: none !important;
+  }

@@ -23,7 +23,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
-import {MatSidenavContent, MatSidenavModule} from '@angular/material/sidenav';
+import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
@@ -34,6 +34,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TextMaskModule } from 'angular2-text-mask';
+import { IConfig, NgxMaskModule } from 'ngx-mask';
 
 
 const modules = [
@@ -73,6 +76,10 @@ const modules = [
   MatToolbarModule,
   MatTooltipModule,
   MatTreeModule,
+  FormsModule,
+  ReactiveFormsModule,
+  TextMaskModule,
+  NgxMaskModule
 ]
 
 @NgModule({

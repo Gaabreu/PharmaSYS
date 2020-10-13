@@ -10,12 +10,12 @@ export interface Transaction {
 }
 
 @Component({
-  templateUrl: './teste.component.html',
-  styleUrls: ['./teste.component.scss']
+  templateUrl: './inicio-caixa.component.html',
+  styleUrls: ['./inicio-caixa.component.scss']
 })
 
 
-export class TesteComponent implements OnInit {
+export class InicioCaixaComponent implements OnInit {
 
   tipos: TipoPagamento[] = [
     {pagamento: 'Débito'},
